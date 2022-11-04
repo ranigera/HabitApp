@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html class=''>
+
+<head>
+    <meta charset='UTF-8'>
+    <meta name="robots" content="noindex">
+    <title>The Experiment Factory two-stage-decision</title>
+
+    <link rel='stylesheet' type='text/css' href='jspsych.css'>
+    <link rel='stylesheet' type='text/css' href='default_style.css'>
+    <link rel='stylesheet' type='text/css' href='style.css'>
+</head>
+
+<body style="direction:rtl">
+    <script src='js/jquery.min.js'></script>
+    <script src="js/math.min.js"></script>
+    <script src='js/jspsych/jspsych.js'></script>
+    <script src='js/jspsych/plugins/jspsych-text.js'></script>
+    <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-text.js'></script>
+    <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-instructions.js'></script>
+    <script src='js/jspsych/plugins/jspsych-call-function.js'></script>
+    <script src='js/jspsych/poldrack_plugins/jspsych-attention-check.js'></script>
+    <script src='js/jspsych/poldrack_plugins/jspsych-poldrack-single-stim.js'></script>
+    <script src='js/jspsych/plugins/jspsych-survey-text.js'></script>
+    <script src='js/jspsych/poldrack_plugins/jspsych-single-stim-button.js'></script>
+    <script src='js/jspsych/poldrack_plugins/poldrack_utils.js'></script>
+    <script src='gate_manager_by_rani.js'></script>
+    <script src='experiment.js'></script>
+    <script src="jatos.js"></script>
+
+    <img src="images/11.png" style="display: none;" />
+    <img src="images/12.png" style="display: none;" />
+    <img src="images/13.png" style="display: none;" />
+    <img src="images/14.png" style="display: none;" />
+    <img src="images/15.png" style="display: none;" />
+    <img src="images/16.png" style="display: none;" />
+    <img src="images/80.png" style="display: none;" />
+    <img src="images/81.png" style="display: none;" />
+    <img src="images/82.png" style="display: none;" />
+    <img src="images/83.png" style="display: none;" />
+    <img src="images/84.png" style="display: none;" />
+    <img src="images/85.png" style="display: none;" />
+    <img src="images/gold_coin.png" style="display: none;" />
+    <img src="images/stanford.png" style="display: none;" />
+
+    <script>
+        $(document).ready(function () {
+
+            jatos.onLoad(function () {
+
+                (async () => {
+                    // make sure all images were appropriately loaded:
+                    // ********************************************************
+                    await Promise.all(Array.from(document.images).filter(img => !img.complete).map(img => new Promise(resolve => { img.onload = resolve; }))).then(() => {
+                        console.log('images finished loading');
+                    });
+                    if (!!Array.from(document.images).filter(img => img.naturalHeight === 0).length) { // check that all images were successfully loaded - detects if there was an error in loading an image
+                        console.log('Problem in image loading');
+                        alert('היתה בעיה בטעינה. אני פנה/י לנסיינ/ית ובקש לינק חדש. תודה')
+                        return
+                    }
+                    // ********************************************************
+
+                    // Create jsPsych's timeline
+                    var two_stage_decision_experiment = createTimeline();
+
+                    expfactory_finished = false;
+
+                    jsPsych.init({
+                        timeline: two_stage_decision_experiment,
+                        display_element: "getDisplayElement",
+                        fullscreen: true,
+                        on_trial_finish: function (data) {
+                            addID('two-stage-decision')
+                        },
+                        on_finish: function (data) {
+                            // Submit results to JATOS ** adjusted by Rani to send "heshed" URL info (subID) and jatos workerID
+                            experimentCompleted = true;
+                            task_data = jsPsych.data.getData()
+                            keptFullScreen = task_data.length === task_data.filter(x => x.full_screen == true).length ? true : false
+                            task_data.unshift({ 'subID': window.location.hash.substr(1), 'experimentCompleted': experimentCompleted, 'keptFullScreen': keptFullScreen })
+                            data_to_send = {}
+                            data_to_send[jatos.workerId] = task_data
+                            var resultJson = JSON.stringify(data_to_send);
+                            expfactory_finished = true;
+                            window.onunload = window.onbeforeunload = null;
+
+                            jatos.endStudy(resultJson, true, "Subject " + window.location.hash.substr(1) + " Completed", false).then(() => {
+                                // Open Questionnaires [Added by Rani]
+                                // ------------------------------------
+                                document.getElementsByClassName('display_stage_background')[0].style.display = "none"
+                                document.getElementsByClassName('display_stage jspsych-display-element')[0].style.display = "none"
+                                var iframe = document.createElement('iframe');
+                                iframe.style.height = "100vh";
+                                iframe.style.width = "100%";
+                                iframe.style.border = "none";
+                                iframe.src = 'https://docs.google.com/COMPLETE_GOOGLE_FORM_URL/viewform?usp=pp_url&entry.1585121778=' + window.location.hash.substr(1); // the "entry.1585121778=" is designed to automatically fill the "Subject ID" field in the google form. Adjust according to needs.
+                                document.body.appendChild(iframe);
+                                // Alternative [switch page rather than an ifame]
+                                //location.replace('https://docs.google.com/COMPLETE_GOOGLE_FORM_URL/viewform?usp=pp_url&entry.1585121778=' + window.location.hash.substr(1))  // the "entry.1585121778=" is designed to automatically fill the "Subject ID" field in the google form. Adjust according to needs.
+                            })
+
+                        },
+                        // Doesn't work:
+                        on_close: function () { // in case the user gets out before it finishes.
+                            // Submit results to JATOS ** adjusted by Rani to send "heshed" URL info (subID) and jatos workerID
+                            experimentCompleted = false;
+                            task_data = jsPsych.data.getData()
+                            keptFullScreen = task_data.length === task_data.filter(x => x.full_screen == true).length ? true : false
+                            task_data.unshift({ 'subID': window.location.hash.substr(1), 'experimentCompleted': experimentCompleted, 'keptFullScreen': keptFullScreen })
+                            data_to_send = {}
+                            data_to_send[jatos.workerId] = task_data
+                            var resultJson = JSON.stringify(data_to_send);
+                            expfactory_finished = true;
+                            window.onunload = window.onbeforeunload = null;
+                            jatos.submitResultData(resultJson);
+                        }
+                    });
+                })();
+            });
+        });
+
+        // Shows a msg before closing the browser window/tab. This works in most modern
+        // browsers but Firefox just shows a default message.
+        window.onbeforeunload = (function () {
+            var msg = "It is important to do this experiment all at once. "
+                + "A restart from the beginning is not allowed. "
+                + "If you reload or close this webpage or your browser "
+                + "the experiment will become invalid. Additionally all data "
+                + "generated during this experiment will be deleted.";
+            return msg;
+        });
+
+    </script>
+</body>
+
+</html>

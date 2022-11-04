@@ -1,0 +1,19 @@
+{
+    "cognitive_atlas_task_id": "trm_5667451917a34",
+    "instructions":"Respond to the stimuli on the screen.",
+    "description":"Expfactory experiment",
+    "url":"https://www.github.com/expfactory-experiments/two-stage-decision",
+    "contributors": [
+        "Ian Eisenberg",
+        "Zeynep Enkavi",
+        "Patrick Bissett",
+        "Vanessa Sochat",
+        "Russell Poldrack"
+    ],
+    "exp_id": "two-stage-decision",
+    "name": "Two Stage Decision Task",
+    "reference":[ "Condition = ordered stims in stage 1 and stage 2 (so [0, 1] or [1, 0] for stage 1 and [2, 3], [4, 5] etc. for stage 2 and FB for the FB condition (1 for reward, 0 for no reward)",
+                 "http://www.sciencedirect.com/science/article/pii/S0896627311001255"],
+    "template": "jspsych",
+    "time": 26
+}

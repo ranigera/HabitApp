@@ -1,6 +1,7 @@
 # Created by Rani Gera
 # *** Don't use this one - use create_subject_keycodes_and_manifests.py ***
 # *** This one is to be used only if one wants to adjust the code and not use individual manifest files ***
+# edit ROOT_DOMAIN to the root domain of the app
 
 import os
 from shutil import copyfile
@@ -39,6 +40,10 @@ def createSubNumDict(ranges=[(101, 200), (201, 300), (701, 800), (801, 900)], ke
 
 
 # RUN THE CODE:
+
+# change dir to the current dir:
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 sub_key_dict = createSubNumDict()
 
 if not os.path.exists('./mapping_key_to_subId.js'):

@@ -4,7 +4,8 @@
 # 1. mapping_key_to_subId.js - a required js file with a mapping between individual subject keycodes (part of the link we send them) and their subject ids.
 # 2. mapping_key_to_subId.csv - a csv file with the individual  links to the app (that encodes the subject number).
 # 3. individual matching manifest files in the "manifests" folder for each subject (This are reuiqred for the app to be used as a progressive web application [PWA] for which it was desinged).
-# 4. backup older versions of mapping_key_to_subId.js and mapping_key_to_subId.csv files with a timestamp (if there were any) and put them in the "backup" folder.
+# 4. backup the newly formed mapping_key_to_subId.js and mapping_key_to_subId.csv files with a timestamp and put them in the "backup" folder.
+# * edit ROOT_DOMAIN to the root domain of the app
 
 
 # Load packages:
@@ -114,9 +115,16 @@ for icon in myDynamicManifest['icons']:
 
 # RUN THE CODE:
 
+# change dir to the current dir:
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
+
 sub_key_dict = createSubNumDict()
 
 if not os.path.exists('./mapping_key_to_subId.js'):
+    # create the backup folder if it is not exist:
+    if not os.path.exists('backup'):
+        os.makedirs('backup')
+
     # create the js file:
     with open('mapping_key_to_subId.js', 'w') as f:
         f.write('var key2subId_mapping = ')

@@ -1,9 +1,10 @@
-This is the 2-stage task taken from Experiment Factory and adjusted to jatos by Rani. Also added pre-loading of the images and some "meta data". 
+### This is the 2-stage task (Daw et al., 2011) taken from Experiment Factory (Sochat et al., 2016) and adjusted to be used with jatos by Rani Gera. Also added pre-loading of the images, some "meta data" and automatically move to google forms questionnaires when completing the task. 
 ### important:
-#### subID is taken from what comes after a hash in the url e.g.: www...../XXX#999 will make it subID 999. To run a subject get into jatos on the server, get a personal worker link, copy the link and add a hash with the subject number.
-#### For backup also add the subject number in as a "comment" in jatos when requesting a worker link.
- 
+#### The subID is taken from what comes after a hash in the url e.g.: www...../XXX#999 will make it subID 999. To run a subject get into jatos on the server, get a personal worker link, copy the link and add a hash with the subject number.
+
+ * For the questionnaires link (if relevant), look for the place holder COMPLETE_GOOGLE_FORM_URL in index.html and insert the questionnaires link instead.
 <br/><br/><br/>
+
 ### ---------------------------- Original documentation of Experiment Factory ----------------------------
 
 

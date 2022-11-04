@@ -1,5 +1,3 @@
-#/backup
-#/manifests
 .DS_Store
 mapping_key_to_subId.csv
 mapping_key_to_subId.js

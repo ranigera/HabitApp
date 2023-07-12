@@ -1,4 +1,4 @@
-# HabitApp Study
+# HabitApp Study & introducing the real-world free-operant (RWFO) paradigm
 ## Repository for the study "A novel smartphone app for experimental habit induction in humans" (Gera et al.)
 * The repository includes parsing and analyses codes.
 * Habit app task code.

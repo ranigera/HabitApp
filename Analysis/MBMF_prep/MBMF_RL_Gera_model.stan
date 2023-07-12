@@ -10,7 +10,7 @@ data {
 	int<lower=0,upper=1> choice1[nS,MT];  // 0 / 1 *choice at 1st stage
 	int<lower=0,upper=1> choice2[nS,MT];  // 0 / 1 *choice at 2nd stage
 	int<lower=0,upper=2> state_at_t2[nS,MT];  // 1 / 2 *state of at t2 (after first choice); * The lower is zero because this are valus at the end of the array which are not in use (they appear in case a subject had less than 200 valid trials)
-	int<lower=0,upper=1> reward[nS,MT];   // 1 / -1 (changed my stan.r file to make this 1,-1 as required) ~~~~~
+	int<lower=0,upper=1> reward[nS,MT];   // 0 / 1
 }
 
 parameters {

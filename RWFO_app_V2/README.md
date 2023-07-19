@@ -9,7 +9,7 @@
 * The app is designed as a progressive web application (PWA) and is compatible with both iPhones and Andorid-based smartphones.
 * This means participants don't need to go through application stores to install it.
 * It also means you can use more than one instance of the app (e.g., to have multiple contexts with different conditions).
-* It is designed to be connected with a mongoDB database and use websockets for fast communication.
+* It is designed to be connected with a mongoDB database and use a websocket for fast communication.
 
 ### To use it: 
 * Download this folder.

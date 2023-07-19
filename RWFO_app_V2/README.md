@@ -1,9 +1,9 @@
 ## Real-World Free-Operant (RWFO) app (V2.0) app code (frontend code).
 
 ### General:
-- The app was first published (and comprehensively described) by Gera et al. [See the preprint](https://psyarxiv.com/kgqun/).
-- [See a demo of the app](https://ranigera.github.io/RWFO_app_demo/).
-- In this new version of the app (V2.0) we have incorporated multiple new functionalities to make the app relevant to a wide scope of research questions. The main new functionalities are described in the preprint and in the [online configuration webpage](https://ranigera.github.io/RWFO_app_setup/).
+- The app was first published (and comprehensively described) by Gera et al. [See the preprint](https://psyarxiv.com/kgqun/){:target="_blank"}.
+- [See a demo of the app](https://ranigera.github.io/RWFO_app_demo/){:target="_blank"}.
+- In this new version of the app (V2.0) we have incorporated multiple new functionalities to make the app relevant to a wide scope of research questions. The main new functionalities are described in the preprint and in the [online configuration webpage](https://ranigera.github.io/RWFO_app_setup/){:target="_blank"}.
 
 ### Notes:
 * The app is designed as a progressive web application (PWA) and is compatible with both iPhones and Andorid-based smartphones.
@@ -13,10 +13,10 @@
 
 ### To use it: 
 * Download this folder.
-* Create or use the existing configuration 'settings.js' file (located in the main folder). For a web page designed to easily edit the main setup file (named `settings.js`) click [here](https://ranigera.github.io/RWFO_app_setup/).
+* Create or use the existing configuration 'settings.js' file (located in the main folder). For a web page designed to easily edit the main setup file (named `settings.js`) click [here](https://ranigera.github.io/RWFO_app_setup/){:target="_blank"}.
 * Look for the placeholder ROOT_DOMAIN in settings.js and replace it with the root domain you intend to use.
 * Run create_subject_keycodes_and_manifests.py to create subject ID codes, links and related files.
 * The app needs to be connected with a backend code and a mogoDB database (or you can adjust it to use any other preferred alternative).
 
 
-#### If you have any questions, interested in other functionalities or wish to collaborate, please [contact us](mailto:ranigera.aristo@gmail.com">).
+### If you have any questions, interested in other functionalities or wish to collaborate, please [contact us](mailto:ranigera.aristo@gmail.com">){:target="_blank"}.

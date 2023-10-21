@@ -1,6 +1,6 @@
-#########################################################################################################
+####################################################################################################
 # R code for the habit app project (Gera et al.):
-## Last modified by Rani on November 2022
+## Last modified by Rani on July 2023
 ## These analyses are based on the files produced by Habit_app_parse_data.ipynb and MBMF_parse_data.ipynb
 #########################################################################################################
 
@@ -158,7 +158,7 @@ ggsave(file.path(figures_path,'Supp-X-Manipulation_check2_bounce_back.tiff'), pp
 
 
 ####################################################################################################################################
-####################            Main Hypothesis (of Habit formatio as a function of training duration)           ###################
+####################            Main Hypothesis (of Habit formation as a function of training duration)           ###################
 ####################################################################################################################################
 
 main = app_data[c('subID','still_valued','devaluation','still_valued_post_deval','mean_still_valued','group','training_length')]
@@ -341,11 +341,10 @@ combined_short_long$training_length = factor(combined_short_long$training_length
 
 dat_text <- data.frame(label = factor(c("Short training", "Extensive training"),levels=c("Short training", "Extensive training")),
                        training_length = factor(c("Short training", "Extensive training"),levels=c("Short training", "Extensive training")),
-                       x= c(1, 1),  y = c(1.7, 1.7))
+                       x= c(1, 1),  y = c(0.8, 0.8))
 
 p <-  ggplot(combined_short_long, aes(meanVal_relativeDiff_deval_SQRT, fill = Cluster)) +
-  #geom_histogram(aes(y=..density..),alpha=0.2,binwidth=0.3)+
-  geom_density(alpha = 0.5)+
+  geom_density(aes(y = after_stat(count/dim(combined_short_long)[1])), kernel = "cosine",bw = 0.1, alpha = 0.5) +
   xlab('Behavioral adaptation index')+
   ylab('Density')+
   facet_wrap(training_length~.,ncol=1)+
@@ -370,8 +369,6 @@ pp <- p + theme_classic(base_size = 11, base_family = "Helvetica")+
 pp$labels$fill <- "Subgroup"
 pp
 ggsave(file.path(figures_path,'Cluster_analysis.tiff'), pp, dpi = 100, height = 605, width=416, units = "px")
-
-
 
 ####################################################################################################################################
 ##########################################            ENGAGEMENT PATTERNS RELATED ANALYSIS           ###############################

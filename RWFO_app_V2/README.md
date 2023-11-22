@@ -1,9 +1,9 @@
 ## Real-World Free-Operant (RWFO) app (V2.0) app code (frontend code).
 
 ### General:
-- The app was first published (and comprehensively described) by Gera et al. [See the preprint](https://psyarxiv.com/kgqun/).
+- The app was first published (and comprehensively described) by Gera et al. [See the paper](https://doi.org/10.3758/s13428-023-02263-6).
 - [See a demo of the app](https://ranigera.github.io/RWFO_app_demo/).
-- In this new version of the app (V2.0) we have incorporated multiple new functionalities to make the app relevant to a wide scope of research questions. The main new functionalities are described in the preprint and in the [online configuration webpage](https://ranigera.github.io/RWFO_app_setup/).
+- In this new version of the app (V2.0) we have incorporated multiple new functionalities to make the app relevant to a wide scope of research questions. The main new functionalities are described in the paper and in the [online configuration webpage](https://ranigera.github.io/RWFO_app_setup/).
 
 ### Notes:
 * The app is designed as a progressive web application (PWA) and is compatible with both iPhones and Andorid-based smartphones.

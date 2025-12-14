@@ -8,5 +8,5 @@
 
 - [See a demo of the app](https://ranigera.github.io/RWFO_app_demo/).
 
-### If you have any questions, interested in other functionalities or wish to collaborate, please [contact us](mailto:ranigera.aristo@gmail.com">).
+### If you have any questions, interested in other functionalities or wish to collaborate, please [contact us](mailto:ranigera.aristo@gmail.com).
 
